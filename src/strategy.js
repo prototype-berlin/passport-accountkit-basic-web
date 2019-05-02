@@ -54,7 +54,7 @@ Strategy.prototype.userProfile = function(accessToken, done) {
       return done(new Error('Failed to parse user profile'));
     }
       
-    let profile = json;
+    let profile = JSON.parse(JSON.stringify(json));
     
     profile.provider = 'accountkit';
     profile._raw = body;
