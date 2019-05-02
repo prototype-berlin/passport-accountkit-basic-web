@@ -7,7 +7,8 @@ const request = require('request');
 function Strategy(options, verify) {
   options = options || {};
   options.apiVersion = options.apiVersion || 'v1.0';
-  options.authorizationURL = options.authorizationURL || `https://www.accountkit.com/${options.apiVersion}/basic/dialog`;
+  options.authType = options.authType || 'sms_login';
+  options.authorizationURL = options.authorizationURL || `https://www.accountkit.com/${options.apiVersion}/basic/dialog/${options.authType}`;
   options.tokenURL = options.tokenURL || `https://graph.accountkit.com/${options.apiVersion}/access_token`;
 
   OAuth2Strategy.call(this, options, verify);
@@ -64,10 +65,6 @@ Strategy.prototype.userProfile = function(accessToken, done) {
 };
 
 Strategy.prototype.authorizationParams = function(options) {
-  options.type = options.type || 'sms_login';
-
-  this._oauth2._authorizeUrl = `${this._oauth2._authorizeUrl}/${options.type}`;
-
   let params = {
     app_id: this._oauth2._clientId,
     fbAppEventsEnabled: false,
