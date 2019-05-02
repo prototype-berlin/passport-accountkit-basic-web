@@ -1,6 +1,6 @@
 {
   "name": "@prototypeberlin/passport-accountkit-basic-web",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Passport strategy for AccountKit (basic web flow)",
   "main": "lib/index.js",
   "scripts": {
