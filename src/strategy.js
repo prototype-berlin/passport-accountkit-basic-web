@@ -70,7 +70,7 @@ Strategy.prototype.authorizationParams = function(options) {
     app_id: this._oauth2._clientId,
     fbAppEventsEnabled: false,
     state: Math.random().toString(36).substring(2),
-    redirect: this._callbackURL,
+    redirect: this._baseUrl + this._callbackURL,
   };
   
   return params;
