@@ -14,6 +14,7 @@ function Strategy(options, verify) {
   OAuth2Strategy.call(this, options, verify);
   this.name = 'accountkit';
   this._userProfileURL = options.userProfileURL || `https://graph.accountkit.com/${options.apiVersion}/me`;
+  this._baseUrl = options.baseUrl || '';
 
   this._oauth2.getOAuthAccessToken = function(code, params, callback) {
     params.code = code;
