@@ -14,7 +14,6 @@ function Strategy(options, verify) {
   OAuth2Strategy.call(this, options, verify);
   this.name = 'accountkit';
   this._userProfileURL = options.userProfileURL || `https://graph.accountkit.com/${options.apiVersion}/me`;
-  this._baseUrl = options.baseUrl || '';
 
   this._oauth2.getOAuthAccessToken = function(code, params, callback) {
     params.code = code;
@@ -70,7 +69,7 @@ Strategy.prototype.authorizationParams = function(options) {
     app_id: this._oauth2._clientId,
     fbAppEventsEnabled: false,
     state: Math.random().toString(36).substring(2),
-    redirect: this._baseUrl + this._callbackURL,
+    redirect: this._callbackURL,
   };
   
   return params;
