@@ -12,7 +12,7 @@ function Strategy(options, verify) {
   options.tokenURL = options.tokenURL || `https://graph.accountkit.com/${options.apiVersion}/access_token`;
 
   OAuth2Strategy.call(this, options, verify);
-  this.name = options.name || 'accountkit';
+  this.name = 'accountkit';
   this._userProfileURL = options.userProfileURL || `https://graph.accountkit.com/${options.apiVersion}/me`;
   this._baseUrl = options.baseUrl || '';
 
